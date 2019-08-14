@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const Users = require('../db').Users
+const Users = require('./db').Users
 const passport = require('../passportWork/setuppassport')
 
 route.get('/signup', (req, res) => {
@@ -74,10 +74,10 @@ route.post('/login', passport.authenticate('local', {
     successReturnToOrRedirect: '/',
     failureRedirect: '/users/login',
     failureFlash: true
-  })
+})
 )
 
-route.get('/logout',(req,res)=>{
+route.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/')
 })

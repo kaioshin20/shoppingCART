@@ -16,25 +16,29 @@
 <body>
 
 
-  {{#each  product as |p|}}
-  <div class="container">
+  {{!-- {{#each  product as |p|}} --}}
+
+  <div style="float:left">
+    <img src="/{{product.enlargedImage}}" style="width:500px" height="700px" class="card-img-top mt-3 ml-4" alt="...">
+  </div>
+  <div class="container" style="display: block">
     <div class="row  " id="product_list">
       <div class="col-4 card">
-        <img src="{{p.imageSRC}}" height="350" width="40" class="card-img-top" alt="...">
-        <h4 class="product_name">{{p.name}}</h4>
-        <div class="product_manufacturer">{{p.manufacturer}}</div>
+        <img src="/{{product.imageSRC}}" height="350" width="40" class="card-img-top" alt="...">
+        <h4 class="product_name">{{product.name}}</h4>
+        <div class="product_manufacturer">{{product.manufacturer}}</div>
         <div class="row">
           <div class="col m-3 p-2">
-            <b>RS.{{p.price}}</b>
+            <b>Rs.{{product.price}}</b>
           </div>
-          <button class="col btn btn-primary m-3 cartBTN" >Add to cart</button>
+          
+          <a class="col btn btn-primary m-3 " href="http://localhost:2000/cart/{{product.id}}">Add to cart</a>
         </div>
       </div>
-
-
     </div>
   </div>
-  {{/each}}
+  {{!-- {{/each}} --}}
+<h1>{{foo}}</h1>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -42,6 +46,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+
 
 </body>
 
