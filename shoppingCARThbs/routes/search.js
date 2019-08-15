@@ -9,10 +9,12 @@ route.get('/search',(req,res)=>{
     })
     .then((products)=>{
        
-        //     req.flash('error_msg','product not found')
-        //    return  res.redirect('/')
-        console.log("products is ");
-        console.log(products);
+           if(products.length<=0){
+            req.flash('error_msg','product not found')
+            return  res.redirect('/')
+           }
+        // console.log("products is ");
+        // console.log(products);
         
         
         res.render('search_product',{products})

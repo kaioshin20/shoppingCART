@@ -20,16 +20,11 @@ route.get('/:id', (req, res) => {
         .then((product) => {
             // console.log("in get of products.js"+req.params.id);
             //  console.log(product);
-            // var str = product.specification
+            var str = product.specification
 
 
-            // var strArray = str.split('@')
-            res.render('specificProduct.hbs', {
-                product: product,
-                helpers: {
-                    foo: function () { return 'foo.'; }
-                }
-            })
+            var aray = str.split('@')
+            res.render('specificProduct.hbs', {product: product,aray:aray})
 
         })
         .catch((err) => {
