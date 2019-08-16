@@ -11,15 +11,6 @@ const Users = require('./routes/db').Users
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 const exphbs = require('express-handlebars')
 
- 
-
-var hbs = exphbs.create({
-    // Specify helpers which are only registered on this instance.
-    helpers: {
-        foo: function () { return 'FOO!'; },
-        bar: function () { return 'BAR!'; }
-    }
-});
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

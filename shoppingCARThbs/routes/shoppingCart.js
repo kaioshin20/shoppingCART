@@ -35,7 +35,7 @@ ensureLoggedIn('/users/login'),
             req.session.cart = cart;
             // console.log("data in req.session.cart=" + req.session.cart);
 
-            res.redirect('/');
+            res.redirect('/shopping-cart');
 
 
 
