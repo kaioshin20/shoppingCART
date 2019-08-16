@@ -5,7 +5,7 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 var Cart = require('./cartOperations')
 const Product = require('./db').Product
 const path = require('path')
-route.use('/', express.static(path.join(__dirname, 'public')))
+
 
 
 route.get('/cart/:id',
@@ -50,9 +50,10 @@ ensureLoggedIn('/users/login'),
 route.get('/shopping-cart',
     ensureLoggedIn('/users/login'),
     function (req, res, next) {
+        req.flash('error','No Item in Cart')
         if (!req.session.cart) {
             // console.log("not having the session");
-            req.flash('error_msg','Empty Cart')
+           
 
             return res.render('shopping-cart', { products: null });
         }

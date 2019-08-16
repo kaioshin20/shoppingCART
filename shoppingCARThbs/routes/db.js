@@ -17,18 +17,26 @@ const Users = sequelize.define('users', {
     },
     email: {
         type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
+        unique: false,
+        allowNull: true
     },
     password: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     cartProducts: {
         type: Sequelize.STRING,
         allowNull: true,
         defaultValue: ""
-    }
+    },
+    fbAccessToken: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    ghAccessToken: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
 
 })
 

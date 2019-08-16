@@ -16,8 +16,12 @@ route.get('/search',(req,res)=>{
         // console.log("products is ");
         // console.log(products);
         
+        if (req.user)
+
+                res.render('search_product', { products: products, User: req.user.username})
+        else
+                res.render('search_product', { products: products })
         
-        res.render('search_product',{products})
         
     }).catch((err)=>{
         console.log("there is error");

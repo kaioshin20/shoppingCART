@@ -68,6 +68,7 @@ route.post('/signup', (req, res) => {
 })
 
 route.get('/login', (req, res) => {
+    
     res.render('login')
 })
 route.post('/login', passport.authenticate('local', {
@@ -76,6 +77,22 @@ route.post('/login', passport.authenticate('local', {
     failureFlash: true
 })
 )
+
+route.get('/login/facebook',passport.authenticate('facebook'))
+
+route.get('/login/facebook/callback',passport.authenticate('facebook',{
+    successRedirect: "/",
+    failureRedirect : '/users/login',
+    failureFlash: true
+}))
+
+route.get('/login/github',passport.authenticate('github'))
+
+route.get('/login/github/callback',passport.authenticate('github',{
+    successRedirect: "/",
+    failureRedirect : '/users/login',
+    failureFlash: true
+}))
 
 route.get('/logout', (req, res) => {
     req.logout();

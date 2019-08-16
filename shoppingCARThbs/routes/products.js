@@ -24,7 +24,12 @@ route.get('/:id', (req, res) => {
 
 
             var aray = str.split('@')
-            res.render('specificProduct.hbs', {product: product,aray:aray})
+            if (req.user)
+
+                res.render('specificProduct.hbs', { product: product, User: req.user.username, aray: aray })
+            else
+                res.render('specificProduct.hbs', { product: product, aray: aray })
+
 
         })
         .catch((err) => {
