@@ -1,7 +1,7 @@
 const passport = require('../passportWork/setuppassport')
 const route = require('express').Router()
 const Product = require('./db').Product
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+var auth = require('connect-ensure-login')
 
 function isAdmin(req,res,next){
     
@@ -16,7 +16,7 @@ else{
 }
 
 
-route.get('/addProduct',ensureLoggedIn('/users/login'),isAdmin,
+route.get('/addProduct',auth.ensureLoggedIn('/users/login'),isAdmin,
 (req,res)=>{
     res.render('add_product')
 })

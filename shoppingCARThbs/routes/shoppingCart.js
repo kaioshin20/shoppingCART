@@ -1,7 +1,7 @@
 const express = require('express')
 const route = express.Router()
 const passport = require('../passportWork/setuppassport')
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+let auth = require('connect-ensure-login')
 var Cart = require('./cartOperations')
 const Product = require('./db').Product
 const path = require('path')
@@ -9,7 +9,7 @@ const path = require('path')
 
 
 route.get('/cart/:id',
-ensureLoggedIn('/users/login'), 
+auth.ensureLoggedIn('/users/login'), 
 (req, res) => {
 
     var cart = new Cart(req.session.cart ? req.session.cart : {})
@@ -48,7 +48,7 @@ ensureLoggedIn('/users/login'),
 })
 
 route.get('/shopping-cart',
-    ensureLoggedIn('/users/login'),
+    auth.ensureLoggedIn('/users/login'),
     function (req, res, next) {
         req.flash('error','No Item in Cart')
         if (!req.session.cart) {

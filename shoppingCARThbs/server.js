@@ -4,12 +4,10 @@ const session = require('express-session')
 var SQLiteStore = require('connect-sqlite3')(session);
 const passport = require('./passportWork/setuppassport')
 const flash = require('connect-flash')
-// const checkLoggedIn=require('./passportWork/checkAuthentication')
 const path = require('path')
 const Product = require('./routes/db').Product
 const Users = require('./routes/db').Users
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-const exphbs = require('express-handlebars')
 
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
