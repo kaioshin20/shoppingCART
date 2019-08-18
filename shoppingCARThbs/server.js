@@ -9,6 +9,8 @@ const Product = require('./routes/db').Product
 const Users = require('./routes/db').Users
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
+const port = process.env.PORT || 2000; 
+
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -60,7 +62,7 @@ app.use('/',require('./routes/search').route)
 
 
 
-app.listen('2000', () => {
+app.listen(port , () => {
     console.log("server running on http://localhost:2000");
 
 })
