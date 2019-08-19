@@ -35,7 +35,7 @@ passport.use(
 passport.use(new FacebookStrategy({
     clientID : "410060069865233",
     clientSecret : "b2c75a4bc9956744658c6621c93b3f65",
-    callbackURL : "https://shopping-cart-first.herokuapp.com/users/login/facebook/callback"
+    callbackURL : "http://shopping-cart-first.herokuapp.com/users/login/facebook/callback"
 
 },
 function(accessToken, refreshToken, profile, done){
@@ -63,7 +63,7 @@ function(accessToken, refreshToken, profile, done){
 passport.use(new GithubStrategy({
     clientID : "Iv1.68c04fa3e0a97864",
     clientSecret : "5931a110b7aa4ce587f22b63ec6aac148f268026",
-    callbackURL : "https://shopping-cart-first.herokuapp.com/users/login/github/callback"
+    callbackURL : "http://shopping-cart-first.herokuapp.com/users/login/github/callback"
 
 },
 function(accessToken, refreshToken, profile, done){
