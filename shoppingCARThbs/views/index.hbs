@@ -30,7 +30,7 @@
     </button> -->
 
     {{!-- SEARCH BAR --}}
-    <form class="form-inline" action="http://localhost:2000/search" method="GET">
+    <form class="form-inline" action="/search" method="GET">
       <input name="name" class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search"
         aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
@@ -73,7 +73,7 @@
     </div>
 
 
-    <a class=" nav-item nav-link" href="http://localhost:2000/shopping-cart"><i class="fa fa-cart-plus"
+    <a class=" nav-item nav-link" href="/shopping-cart"><i class="fa fa-cart-plus"
         aria-hidden="true"></i>CART
       <span class="badge">{{session.cart.totalQty}}</span>
     </a>
