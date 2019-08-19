@@ -4,6 +4,8 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const GithubStrategy = require('passport-github').Strategy;
 const Users = require('../routes/db').Users
 
+const port = process.env.PORT || 2000;
+
 passport.use(
     new  LocalStrategy((username,password,done)=>{
         Users.findOne({
@@ -33,7 +35,7 @@ passport.use(
 passport.use(new FacebookStrategy({
     clientID : "410060069865233",
     clientSecret : "b2c75a4bc9956744658c6621c93b3f65",
-    callbackURL : "http://localhost:2000/users/login/facebook/callback"
+    callbackURL : "/users/login/facebook/callback"
 
 },
 function(accessToken, refreshToken, profile, done){
@@ -61,21 +63,18 @@ function(accessToken, refreshToken, profile, done){
 passport.use(new GithubStrategy({
     clientID : "Iv1.68c04fa3e0a97864",
     clientSecret : "5931a110b7aa4ce587f22b63ec6aac148f268026",
-    callbackURL : "http://localhost:2000/users/login/github/callback"
+    callbackURL : "/users/login/github/callback"
 
 },
 function(accessToken, refreshToken, profile, done){
     console.log(profile);
     
     
-   Users.findCreateFind({
-    where: {
-        username: profile.username
-    },
-    defaults: {
+   Users.create({
+    
         username: profile.username,
         ghAccessToken: accessToken,
-    },
+    
    }).then((user)=>{
     console.log("user");
        console.log(user);
