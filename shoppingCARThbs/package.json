@@ -1,7 +1,6 @@
 {
   "name": "shoppingcarthbs",
   "version": "1.0.0",
-  "description": "",
   "main": "db.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,5 +24,6 @@
     "sequelize": "^5.12.2",
     "sqlite3": "^4.0.9",
     "stripe": "^7.8.0"
-  }
+  },
+  "description": ""
 }
