@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStratergy = require('passport-google-oauth20');
 const GithubStrategy = require('passport-github').Strategy;
 const Users = require('../routes/db').Users
 
@@ -44,6 +45,33 @@ function(accessToken, refreshToken, profile, done){
    Users.create({
        username: profile.displayName,
        fbAccessToken: accessToken
+   }).then((user)=>{
+    console.log("user");
+       console.log(user);
+       
+       done(null,user)
+   }).catch((err)=>{
+       console.log("inside error");
+       console.log(err);
+       done(err)
+       
+       
+   })
+       
+}))
+
+passport.use(new GoogleStratergy({
+    clientID : gid,
+    clientSecret : gSec,
+    callbackURL : "http://localhost:2000/users/login/google/callback"
+
+},
+function(accessToken, refreshToken, profile, done){
+    console.log(profile);
+    
+   Users.create({
+       username: profile.displayName,
+       gAccessToken: accessToken
    }).then((user)=>{
     console.log("user");
        console.log(user);

@@ -86,6 +86,14 @@ route.get('/login/facebook/callback',passport.authenticate('facebook',{
     failureFlash: true
 }))
 
+route.get('/login/google',passport.authenticate('google', {scope: ['profile', 'email']}))
+
+route.get('/login/google/callback',passport.authenticate('google',{
+    successRedirect: "/",
+    failureRedirect : '/users/login',
+    failureFlash: true
+}))
+
 route.get('/login/github',passport.authenticate('github'))
 
 route.get('/login/github/callback',passport.authenticate('github',{
