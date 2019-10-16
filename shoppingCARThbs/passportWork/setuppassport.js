@@ -61,8 +61,8 @@ function(accessToken, refreshToken, profile, done){
 }))
 
 passport.use(new GoogleStratergy({
-    clientID : gid,
-    clientSecret : gSec,
+    clientID : "371872714116-7imjdctu7758dds5ckcgpt9utj2md76r.apps.googleusercontent.com",
+    clientSecret : "WJRtQyqvdntprIPRizlRXYug",
     callbackURL : "http://localhost:2000/users/login/google/callback"
 
 },
