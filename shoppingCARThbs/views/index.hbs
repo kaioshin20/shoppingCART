@@ -18,65 +18,70 @@
     <a class="navbar-brand nav-item nav-link" href="#">ShopHere</a>
 
     {{!--the below anchor tags are just for providing space --}}
-    <a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link"
+    {{!-- <a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link"
       href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a
       class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link"
-      href="#"></a> <a class=" nav-item nav-link" href="#"></a>
+      href="#"></a> <a class=" nav-item nav-link" href="#"></a> --}}
+
+    
 
 
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button> -->
+    </button>
 
-    {{!-- SEARCH BAR --}}
-    <form class="form-inline" action="/search" method="GET">
-      <input name="name" class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search"
-        aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
-    </form>
+      
+      
 
-    {{!--the below anchor tags are just for providing space --}}
-    <a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link"
-      href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a
-      class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link"
-      href="#"></a> <a class=" nav-item nav-link" href="#"></a>
+      {{!--the below anchor tags are just for providing space --}}
+      {{!-- <a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link"
+        href="#"></a><a class=" nav-item nav-link" href="#"></a><a class=" nav-item nav-link" href="#"></a><a
+        class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link" href="#"></a> <a class=" nav-item nav-link"
+        href="#"></a> <a class=" nav-item nav-link" href="#"></a> --}}
 
-    {{!-- DROPDOWN --}}
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      {{!-- DROPDOWN --}}
+      <div class="collapse navbar-collapse my-2" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown mx-3">
+            {{!-- SEARCH BAR --}}
+            <form class="form-inline" action="/search" method="GET">
+              <input name="name" class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search"
+                aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+            </form>
+          </li>
 
-        <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-3">
+            {{#if login}}
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{User}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/cart">Profile</a>
+              <a class="dropdown-item" href="/users/logout">LogOut</a>
+            </div>
+            {{else}}
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              SignUp
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/users/signup">SignUp</a>
+              <a class="dropdown-item" href="/users/login">login</a>
+            </div>
 
-          {{#if login}}
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{User}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/cart">Profile</a>
-            <a class="dropdown-item" href="/users/logout">LogOut</a>
-          </div>
-          {{else}}
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            SignUp
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/users/signup">SignUp</a>
-            <a class="dropdown-item" href="/users/login">login</a>
-          </div>
-
-          {{/if}}
-        </li>
-      </ul>
-    </div>
-
-
-    <a class=" nav-item nav-link" href="/shopping-cart"><i class="fa fa-cart-plus"
-        aria-hidden="true"></i>CART
-      <span class="badge">{{session.cart.totalQty}}</span>
-    </a>
+            {{/if}}
+          </li>
+          <li class="nav-item dropdown mx-3">
+            <a class=" nav-item nav-link" href="/shopping-cart"><i class="fa fa-cart-plus"
+              aria-hidden="true"></i>CART
+              <span class="badge">{{session.cart.totalQty}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
   </nav>
   <br>
