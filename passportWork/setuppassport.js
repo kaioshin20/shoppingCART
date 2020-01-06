@@ -60,32 +60,32 @@ function(accessToken, refreshToken, profile, done){
        
 }))
 
-passport.use(new GoogleStratergy({
-    clientID : "371872714116-7imjdctu7758dds5ckcgpt9utj2md76r.apps.googleusercontent.com",
-    clientSecret : "WJRtQyqvdntprIPRizlRXYug",
-    callbackURL : "http://shopping-cart-first.herokuapp.com/users/login/github/callback"
+// passport.use(new GoogleStratergy({
+//     clientID : "371872714116-7imjdctu7758dds5ckcgpt9utj2md76r.apps.googleusercontent.com",
+//     clientSecret : "WJRtQyqvdntprIPRizlRXYug",
+//     callbackURL : "http://shopping-cart-first.herokuapp.com/users/login/github/callback"
 
-},
-function(accessToken, refreshToken, profile, done){
-    console.log(profile);
+// },
+// function(accessToken, refreshToken, profile, done){
+//     console.log(profile);
     
-   Users.create({
-       username: profile.displayName,
-       gAccessToken: accessToken
-   }).then((user)=>{
-    console.log("user");
-       console.log(user);
+//    Users.create({
+//        username: profile.displayName,
+//        gAccessToken: accessToken
+//    }).then((user)=>{
+//     console.log("user");
+//        console.log(user);
        
-       done(null,user)
-   }).catch((err)=>{
-       console.log("inside error");
-       console.log(err);
-       done(err)
+//        done(null,user)
+//    }).catch((err)=>{
+//        console.log("inside error");
+//        console.log(err);
+//        done(err)
        
        
-   })
+//    })
        
-}))
+// }))
 
 
 passport.use(new GithubStrategy({
