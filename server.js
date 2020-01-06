@@ -9,7 +9,7 @@ const Product = require('./routes/db').Product
 const Users = require('./routes/db').Users
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 2000; 
 
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
@@ -66,7 +66,7 @@ app.use('/',require('./routes/support').route)
 
 
 app.listen(port , () => {
-    console.log("server running on http://localhost:3000");
+    console.log("server running on http://localhost:2000");
 
 })
 
