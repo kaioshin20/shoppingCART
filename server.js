@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const session = require('express-session')
-// var SQLiteStore = require('connect-sqlite3')(session);
+const SQLiteStore = require('connect-sqlite3')(session);
 const passport = require('./passportWork/setuppassport')
 const flash = require('connect-flash')
 const path = require('path')
@@ -17,7 +17,7 @@ app.use(express.json())
 
 app.use(
     session({
-        store: new SQLiteStore,
+        // store: new SQLiteStore,
         secret: 'a string for secret',
         resave: false,
         saveUninitialized: true,
