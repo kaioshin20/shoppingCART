@@ -2,7 +2,7 @@ const express = require('express')
 const route = express.Router()
 const passport = require('../passportWork/setuppassport')
 let auth = require('connect-ensure-login')
-var Cart = require('./cartOperations')
+const Cart = require('./cartOperations')
 const Product = require('./db').Product
 const path = require('path')
 

@@ -1,7 +1,7 @@
 const passport = require('../passportWork/setuppassport')
 const route = require('express').Router()
 const Product = require('./db').Product
-var auth = require('connect-ensure-login')
+const auth = require('connect-ensure-login')
 
 function isAdmin(req,res,next){
     

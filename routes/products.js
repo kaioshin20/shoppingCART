@@ -3,7 +3,7 @@ const route = express.Router()
 const Product = require('./db').Product
 const path = require('path')
 // route.use('/', express.static(path.join(__dirname, '../public/images')))
-var exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 
 

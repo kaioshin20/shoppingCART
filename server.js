@@ -7,7 +7,7 @@ const flash = require('connect-flash')
 const path = require('path')
 const Product = require('./routes/db').Product
 const Users = require('./routes/db').Users
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 const port = process.env.PORT || 2000; 
 
@@ -17,7 +17,7 @@ app.use(express.json())
 
 app.use(
     session({
-        // store: new SQLiteStore,
+         store: new SQLiteStore,
         secret: 'a string for secret',
         resave: false,
         saveUninitialized: true,
