@@ -100,7 +100,7 @@ route.get('/login/github',passport.authenticate('github'))
 
 route.get('/login/github/callback',passport.authenticate('github',{
     successReturnToOrRedirect: '/',
-    // successRedirect: "/",
+    successRedirect: "/",
     failureRedirect : '/users/login',
     failureFlash: true
 }))
