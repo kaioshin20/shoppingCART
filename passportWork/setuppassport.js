@@ -91,7 +91,7 @@ function(accessToken, refreshToken, profile, done){
 passport.use(new GithubStrategy({
     clientID : "b8c858edef666b71cd66",
     clientSecret : "63439f0959df28746585e0917a99e3582488110f",
-    callbackURL : "https://shoppingg-cartt.herokuapp.com/login/github/callback"
+    // callbackURL : "https://shoppingg-cartt.herokuapp.com/login/github/callback"
 
 },
 function(accessToken, refreshToken, profile, done){
