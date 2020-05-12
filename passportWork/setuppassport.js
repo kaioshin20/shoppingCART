@@ -61,8 +61,8 @@ function(accessToken, refreshToken, profile, done){
 }))
 
 passport.use(new GoogleStratergy({
-    clientID : "371872714116-7imjdctu7758dds5ckcgpt9utj2md76r.apps.googleusercontent.com",
-    clientSecret : "92-fd-v1c10bVPqljIrFIXXl",
+    clientID : "371872714116-ijssdcp0nt8na2ke28b191kv5krlhk5m.apps.googleusercontent.com",
+    clientSecret : "jUYoVDGbrmqp1PmerC9Lq7hg",
     callbackURL : "https://shopping-cart2019.herokuapp.com/users/login/google/callback"
 
 },
