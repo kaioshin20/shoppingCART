@@ -5,9 +5,6 @@ const SQLiteStore = require('connect-sqlite3')(session);
 const passport = require('./passportWork/setuppassport')
 const flash = require('connect-flash')
 const path = require('path')
-const Product = require('./routes/db').Product
-const Users = require('./routes/db').Users
-const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 const port = process.env.PORT || 2000; 
 
@@ -46,7 +43,7 @@ app.use('/', require('./routes/homePage').route)
 app.use('/users', require('./routes/users').route)
 app.use('/products', require('./routes/products').route)
 app.use('/', require('./routes/add_product').route)
-app.use('/', require('./routes/deleteProduct').route);
+app.use('/', require('./routes/deleteProduct').route)
 app.use('/',require('./routes/shoppingCart').route)
 app.use('/',require('./routes/search').route)
 app.use('/',require('./routes/support').route)
@@ -61,9 +58,6 @@ app.use('/',require('./routes/support').route)
 //     req.flash('error_msg', 'Please log in to view that resource');
 //     res.redirect('/users/login')
 // }
-
-
-
 
 app.listen(port , () => {
     console.log("server running on http://localhost:2000");

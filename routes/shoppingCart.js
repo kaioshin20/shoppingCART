@@ -5,7 +5,7 @@ let auth = require('connect-ensure-login')
 const Cart = require('./cartOperations')
 const Product = require('./db').Product
 const path = require('path')
-
+const stripe = require('stripe')('sk_test_LoZgvtbMdru5r5Lx5UAMjcaV00YsNeCEJM');
 
 
 route.get('/cart/:id',
@@ -96,12 +96,55 @@ route.get('/removeAll/:id',(req,res)=>{
 })
 
 route.get('/checkout', function (req, res, next) {
+    console.log("in checkout");
+    
     if (!req.session.cart) {
         return res.redirect('/shopping-cart');
     }
     var cart = new Cart(req.session.cart);
     // var errMsg = req.flash('error')[0];
     res.render('checkout', { total: cart.totalPrice });
+});
+route.post('/checkout', function(req,res,next) {
+    console.log("in checkout rt post");
+    if (!req.session.cart) {
+        console.log("in checkout post");
+        return res.redirect('/shopping-cart');
+    }
+    var cart = new Cart(req.session.cart);
+    // var stripe = require('stripe')("sk_test_LoZgvtbMdru5r5Lx5UAMjcaV00YsNeCEJM");
+    // stripe.charges.create(
+    //     {
+    //       "source": "tok_19oF...StPM",
+    //       "capture": false,
+    //       "amount": 33000,
+    //       "currency": "EUR",
+    //       "application_fee": 100,
+    //       "description": "Some description",
+    //       "receipt_email": "rajnishtiwarihrt@gmail.com",
+
+    //     },
+        
+    //     {stripe_account: "12345678"}
+    //   );
+    stripe.charges.create({
+        amount: cart.totalPrice*100,
+        currency: "usd",
+        source: req.body.stripeToken,
+        description: "Test Charge"
+    }, function(err, charge) {
+        if(err) {
+            console.log(err);
+            
+           // req.flash('error', error.message);
+            return res.redirect('/checkout');
+        }
+        console.log("out of err");
+        
+        req.flash('success', 'Successfully bought product');
+        req.cart = null;
+        res.redirect('/signup');
+    });
 });
 
 exports = module.exports = {

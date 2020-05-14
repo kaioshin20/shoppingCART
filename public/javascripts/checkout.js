@@ -5,6 +5,7 @@ Stripe.setPublishableKey('pk_test_Ti5CqizggAnpe7idYVxEFsMw000HhQJelw');
  var $form = $('#checkout-form');
 
   $form.submit(function(event){
+    $('#charge-error').addClass('hidden');
       $form.find('button').prop('disable',true);
       Stripe.card.createToken({
         name: $("#card-name").val(),
