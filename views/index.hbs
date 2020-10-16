@@ -9,12 +9,19 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+  <style>
+    .dark-mode {
+      filter: invert(1) hue-rotate(180deg);
+    }
+    .invert {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  </style>
   <title>Document</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark darkones invert">
     <a class="navbar-brand nav-item nav-link" href="#">ShopHere</a>
 
    
@@ -37,6 +44,7 @@
             </form>
           </li>
            <a class="navbar-brand nav-item nav-link" href="/support">Help</a>
+            <button onclick="toggleMode()" class="btn btn-outline-success my-2 my-sm-0">Toggle Mode</button>
           <li class="nav-item dropdown mx-3">
             
             {{#if login}}
@@ -85,7 +93,7 @@
       {{#each  products as |product|}}
       <div class="col-xl-3 col-md-5 col-sm-10 mx-4 my-2 card">
 
-        <img src="{{product.imageSRC}}" height="330" width="30" class="card-img-top mt-3 " alt="...">
+        <img src="{{product.imageSRC}}" height="330" width="30" class="card-img-top mt-3 darkones invert" alt="...">
         <div class="card-body">
           {{!-- <h4 class="product_name">{{product.name}}</h4> --}}
 
@@ -95,7 +103,7 @@
             <div class="col m-3 p-2">
               <b>Rs.{{product.price}}</b>
             </div>
-            <a class="col btn btn-primary m-3 buybutton" href="/products/{{product.id}}">Buy</a>
+            <a class="col btn btn-primary m-3 buybutton darkones invert" href="/products/{{product.id}}">Buy</a>
           </div>
         </div>
 
@@ -114,6 +122,20 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+  <script>
+    function toggleElements() {
+      let length = document.getElementsByClassName("darkones").length;
+      let elements = document.getElementsByClassName("darkones");
+      for(let i=0; i<length; i++){
+        document.getElementsByClassName("darkones")[i].classList.toggle("invert");
+      }
+    }
+    toggleElements();
+    function toggleMode() {
+      document.documentElement.classList.toggle('dark-mode');
+      toggleElements();
+    }
+  </script>
 
 
 </body>
